@@ -1,61 +1,19 @@
-class Bag {
-    weight;
-    constructor(weight){
-        if (!weight){
-            throw new Error("Bag must have a weight!");
-        }
-        this.weight = weight;
-    }
-}
+const h_Bag = require("./classes/bag.js");
+const h_Person = require("./classes/person.js");
+const h_Airport = require("./classes/airport.js");
+const h_Plane = require("./classes/plane.js");
 
-class Person {
-    name;
-    bags;
-    constructor(name, bags){
-        if (!name || !bags){
-            throw new Error("Person must have a name and array of Bag");
-        }
-        this.name = name;
-        this.bags = bags;
-    }
-}
+let mySmallBag = new h_Bag.Bag("2KG");
+let myBigBag = new h_Bag.Bag("15KG");
 
-class Plane {
-    passengers = [];
-    destination;
-    
-    constructor(destination){
-        if (!destination){
-            throw new Error("Plane must have a destination");
-        }
-        this.destination = destination;
-    }
+let bobTheTraveler = new h_Person.Person("Bob Bob",[mySmallBag,myBigBag]);
 
-    board(Person) {
-        this.passengers.push(Person);
-    }
-}
+let airport = new h_Airport.Airport("The Magical Islands Int.Airport");
 
-class Airport {
-    name;
-    constructor(name){
-        if (!name){
-            throw new Error("Airport must have a name");
-        }
-        this.name = name;
-    }
-}
-
-let mySmallBag = new Bag("2KG");
-let myBigBag = new Bag("15KG");
-
-let bobTheTraveler = new Person("Bob Bob",[mySmallBag,myBigBag]);
-
-let airport = new Airport("The Magical Islands Int.AirPort");
-
-let airplane = new Plane(airport);
+let airplane = new h_Plane.Plane(airport);
 
 airplane.board(bobTheTraveler);
 
 
-module.exports = {Bag, Person, Plane, Airport, mySmallBag, myBigBag, bobTheTraveler, airport, airplane};
+
+module.exports = { mySmallBag, myBigBag, bobTheTraveler, airport, airplane };
