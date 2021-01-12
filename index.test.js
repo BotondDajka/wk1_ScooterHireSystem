@@ -31,12 +31,20 @@ describe("check headers", ()=>{
         let myAirport = new h_Airport.Airport("My Little Airport");
         
         expect(myAirport.name).toEqual("My Little Airport");
+
+        expect(() => {
+            let fail = new h_Airport.Airport();
+        }).toThrow("Airport must have a name");
     });
 
     test("bag header", () =>{
         let myBag = new h_Bag.Bag("5KG");
 
         expect(myBag.weight).toEqual("5KG");
+
+        expect(() => {
+            let fail = new h_Bag.Bag();
+        }).toThrow("Bag must have a weight!");
     });
 
     test("person header", () =>{
@@ -50,6 +58,12 @@ describe("check headers", ()=>{
 
         expect(myPerson.bags[0].weight).toEqual("5KG");
         expect(myPerson.bags[1].weight).toEqual("15KG");
+
+
+        expect(() => {
+            let fail = new h_Person.Person;
+        }).toThrow("Person must have a name and array of Bag");
+
     });
 
     test("plane header", () =>{
@@ -59,6 +73,18 @@ describe("check headers", ()=>{
         expect(myPlane.destination).toEqual(myAirport);
 
         expect(myPlane.destination.name).toEqual("My Little Airport");
-    });
 
+        expect(() => {
+            let fail = new h_Plane.Plane();
+        }).toThrow("Plane must have a destination");
+    });
+});
+
+describe("async stuff", () => {
+
+    test("airports have a city", async () => {
+        const CDG = new h_Airport.Airport("CDG")
+        const airport = await CDG.getInfo()
+        expect(airport.city).toEqual("Paris")
+    })
 });
