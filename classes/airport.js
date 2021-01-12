@@ -29,9 +29,9 @@ class Airport {
                 const [airport] = Object.keys(airports).filter(airportCode => airports[airportCode].iata === this.name).map(airportCode => airports[airportCode])
                 resolve(airport)
             })
-
         })
     }
 }
+
 
 module.exports = { Airport }
