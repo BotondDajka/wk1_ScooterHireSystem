@@ -26,11 +26,15 @@ describe("async stuff", () => {
 
 
         const airportNotInJson = new h_Airport.Airport("Easter Island")
-        
-        /* Broken?
-        expect(async () => {
-            const airport2 = await airportNotInJson.getInfo().catch(err => {throw err})
-        }).toThrow("Ariport name not found within file"); */
+        // expect(async () => {
+        //     const airport2 = await airportNotInJson.getInfo().catch(err => {throw err})
+        // }).toThrow("Airport name not found within file"); 
+
+        await expect(airportNotInJson.getInfo()).rejects.toThrow("Airport name not found within file");
+        //await airportNotInJson.getInfo()
+        // expect( async () => {
+        //     await airportNotInJson.getInfo()
+        // }).reject.toThrow("Airport name not found within file");
     })
 
 

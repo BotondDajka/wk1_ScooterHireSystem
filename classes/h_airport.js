@@ -34,14 +34,11 @@ class Airport {
                 const [airport] = Object.keys(airports).filter(airportCode => airports[airportCode].iata === this.name).map(airportCode => airports[airportCode])
                 
                 if (airport == undefined){
-                    reject("Ariport name not found within file")
+                    reject(new Error("Airport name not found within file"))
                 } 
                 else{
                     resolve(airport)
-                }
-                
-                
-                
+                } 
             })
         })
     }
