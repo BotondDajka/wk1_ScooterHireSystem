@@ -1,3 +1,9 @@
+const h_Bag = require("../classes/h_bag.js");
+const h_Person = require("../classes/h_person.js");
+const h_Plane = require("../classes/h_plane.js");
+
+
+
 const { rejects } = require('assert');
 const fs = require('fs');
 const { resolve } = require('path');
@@ -24,10 +30,18 @@ class Airport {
 
                 /* istanbul ignore next */
                 if (err) return reject(err)
-
                 const airports = JSON.parse(String(data))
                 const [airport] = Object.keys(airports).filter(airportCode => airports[airportCode].iata === this.name).map(airportCode => airports[airportCode])
-                resolve(airport)
+                
+                if (airport == undefined){
+                    reject("Ariport name not found within file")
+                } 
+                else{
+                    resolve(airport)
+                }
+                
+                
+                
             })
         })
     }

@@ -1,7 +1,7 @@
-const h_Bag = require("../classes/bag.js");
-const h_Person = require("../classes/person.js");
-const h_Airport = require("../classes/airport.js");
-const h_Plane = require("../classes/plane.js");
+const h_Bag = require("../classes/h_bag.js");
+const h_Person = require("../classes/h_person.js");
+const h_Airport = require("../classes/h_airport.js");
+const h_Plane = require("../classes/h_plane.js");
 
 const airports = require("../index.js")
 

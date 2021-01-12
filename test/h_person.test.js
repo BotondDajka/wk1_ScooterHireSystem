@@ -1,7 +1,7 @@
-const h_Bag = require("../classes/bag.js");
-const h_Person = require("../classes/person.js");
-const h_Airport = require("../classes/airport.js");
-const h_Plane = require("../classes/plane.js");
+const h_Bag = require("../classes/h_bag.js");
+const h_Person = require("../classes/h_person.js");
+const h_Airport = require("../classes/h_airport.js");
+const h_Plane = require("../classes/h_plane.js");
 
 const airports = require("../index.js")
 
@@ -22,5 +22,13 @@ describe("check headers", ()=>{
             let fail = new h_Person.Person;
         }).toThrow("Person must have a name and array of Bag");
 
+        const mike = new h_Person.Passenger("H78568", "Mike",[myBag,mySecondBag]);
+        const captain = new h_Person.Crewmember("Captain", "George", [mySecondBag]);
+
+        expect(mike.name).toEqual("Mike");
+        expect(mike.ticketNumber).toEqual("H78568");
+        expect(mike.bags).toEqual([myBag,mySecondBag]);
+        expect(mike instanceof h_Person.Person).toBeTruthy();
+        expect(captain instanceof h_Person.Person).toBeTruthy();
     });
 });
