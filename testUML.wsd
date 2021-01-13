@@ -1,0 +1,45 @@
+@startuml
+
+title TestUML - Diagram
+
+class Airport {
+    String name
+    __ Getters __
+    Object getInfo()
+}
+
+class Plane {
+    Array<Passenger> passengers
+    Array<Crewmember> crew
+    Airport destination
+    __ Setters __
+    void board(Passenger)
+    void setCrew(Array<Crewmember>)
+}
+
+class Bag {
+    String weight
+}
+
+class Person {
+    String name
+    Array<Bag> bags
+}
+
+class Crewmember {
+    String role
+}
+
+class Passenger {
+    String ticketNumber
+}
+
+Person <|-- Crewmember
+Person <|-- Passenger
+Person  -- "0..*" Bag : contains
+
+Plane --  "0..*" Passenger : contains
+Plane -- "0..*" Crewmember : contains
+Plane -- "1" Airport : contains
+
+@enduml
