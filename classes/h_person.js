@@ -29,7 +29,7 @@ class Passenger extends Person{
 
     /**
      * @constructor
-     * @param {String} ticketNumber 
+     * @param {String} ticketNumber ticket number of the Passenger
      * @param {String} name 
      * @param {Array<Bag>} bags 
      */

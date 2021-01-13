@@ -18,6 +18,7 @@ describe("check headers", ()=>{
     });
 });
 
+
 describe("async stuff", () => {
     test("airports have a city", async () => {
         const CDG = new h_Airport.Airport("CDG")
@@ -25,18 +26,22 @@ describe("async stuff", () => {
         expect(airport.city).toEqual("Paris")
 
 
-        const airportNotInJson = new h_Airport.Airport("Easter Island")
-        // expect(async () => {
+               // expect(async () => {
         //     const airport2 = await airportNotInJson.getInfo().catch(err => {throw err})
         // }).toThrow("Airport name not found within file"); 
 
-        await expect(airportNotInJson.getInfo()).rejects.toThrow("Airport name not found within file");
         //await airportNotInJson.getInfo()
         // expect( async () => {
         //     await airportNotInJson.getInfo()
         // }).reject.toThrow("Airport name not found within file");
     })
+    test("airport that doesnt exist", async () => {
+        const airportNotInJson = new h_Airport.Airport("Easter Island")
 
+        //await expect(airportNotInJson.getInfo()).rejects.toThrow("Airport name not found within file");
+        //const result = await airportNotInJson.getInfo().reject
 
+        await expect(airportNotInJson.getInfo()).rejects.toBeInstanceOf(Error);
 
+    })
 });
