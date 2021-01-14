@@ -1,24 +1,31 @@
+//const ScooterHire = require("./h_ScooterHire")
+const ChargingStation = require("./h_ChargingStation");
+const Scooter = require("./h_Scooter");
+const User = require("./h_User");
+const Battery = require("./h_Battery");
 
 /**
- * @class Parent Object of the Scooter Hire System
+ * @class Static Main Object of the Scooter Hire System
  * @property {Array<Scooter>} allScooters List of every scooter
  * @property {Array<Scooter>} availableScooters List of available scooters
- * @property {Array<ChargeStation>} chargingStations List of Charging Stations
+ * @property {Array<ChargingStation>} chargingStations List of Charging Stations
  * @property {Array<User>} userList List of registered users
  */
-export class ScooterHire {
+class ScooterHire {
+    static name="test"
     static allScooters = [];
+    
     static availableScooters = [];
-
     static chargingStations = [];
 
-    static userList = []
+    static userList = [];
+
     /**
      * @param {User} User instance of User
      * @description Method used to add new scooter to list of scooters
      * @returns {void}
      */
-    addUser(User){
+    static addUser(User){
         this.userList.push(User);
     }
 
@@ -27,16 +34,16 @@ export class ScooterHire {
      * @description  Method used to add new scooter to list of scooters
      * @returns {void}
      */
-    addScooter(Scooter){
+    static addScooter(Scooter){
         this.allScooters.push(Scooter);
     }
 
     /**
-     * @param {string} userName
+     * @param {string} userName username of the user
      * @description Method used to find a user form userList, returns U
      * @returns {User}
      */
-    getUser(userName){
+    static getUser(userName){
         for (let i = 0; i < userList.length; i++){
             if (userName == this.userList[i].userList) {
                 return userList[i]
@@ -44,3 +51,5 @@ export class ScooterHire {
         }
     }
 }
+
+module.exports = ScooterHire

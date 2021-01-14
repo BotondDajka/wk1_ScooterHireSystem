@@ -26,7 +26,7 @@
     
 
 
-    <title>h_ScooterHire.js</title>
+    <title>h_User.js</title>
 
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -63,7 +63,7 @@
 
 <div id="main">
     
-    <h1 id='page-title' class="page-title">h_ScooterHire.js</h1>
+    <h1 id='page-title' class="page-title">h_User.js</h1>
     
 
     
@@ -73,61 +73,58 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>//const ScooterHire = require("./h_ScooterHire")
+            <pre class="prettyprint source linenums"><code>const ScooterHire = require("./h_ScooterHire")
 const ChargingStation = require("./h_ChargingStation");
 const Scooter = require("./h_Scooter");
-const User = require("./h_User");
+//const User = require("./h_User");
 const Battery = require("./h_Battery");
 
 /**
- * @class Static Main Object of the Scooter Hire System
- * @property {Array&lt;Scooter>} allScooters List of every scooter
- * @property {Array&lt;Scooter>} availableScooters List of available scooters
- * @property {Array&lt;ChargingStation>} chargingStations List of Charging Stations
- * @property {Array&lt;User>} userList List of registered users
+ * @class User object that stores the registered users
+ * @property {string} userName List of every scooter
+ * @property {Scooter|null} availableScooters List of available scooters
  */
-class ScooterHire {
-    static name="test"
-    static allScooters = [];
+class User {
+    userName;
+    hiredScooter;
     
-    static availableScooters = [];
-    static chargingStations = [];
-
-    static userList = [];
-
     /**
-     * @param {User} User instance of User
-     * @description Method used to add new scooter to list of scooters
+     * @param {string} userName 
+     */
+    constructor(userName){
+        this.userName = userName;
+        ScooterHire.addUser(this);
+    }
+    
+    /**
+     * @description Method to return scooter the user has rented
      * @returns {void}
      */
-    static addUser(User){
-        this.userList.push(User);
+    returnScooter(){
+
     }
 
     /**
-     * @param {Scooter} Scooter instance of Scooter
-     * @description  Method used to add new scooter to list of scooters
+     * @param {Scooter} Scooter Intsance of a scooter to set
+     * @description Method to set rented scooter to the user
      * @returns {void}
      */
-    static addScooter(Scooter){
-        this.allScooters.push(Scooter);
+    setHiredScooter(Scooter){
+        this.hiredScooter = Scooter
     }
 
     /**
-     * @param {string} userName username of the user
-     * @description Method used to find a user form userList, returns U
-     * @returns {User}
+     * @param {string} stationName
+     * @description Method used to get an available scooter at a given station
+     * @returns {Scooter}
      */
-    static getUser(userName){
-        for (let i = 0; i &lt; userList.length; i++){
-            if (userName == this.userList[i].userList) {
-                return userList[i]
-            }
-        }
+    getScooterAtStation(stationName){
+        
     }
 }
 
-module.exports = ScooterHire</code></pre>
+module.exports = User;
+</code></pre>
         </article>
     </section>
 

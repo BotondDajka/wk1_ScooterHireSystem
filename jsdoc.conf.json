@@ -5,6 +5,11 @@
         "excludePattern": "node_modules"
     },
     "opts":{
-        "destination": "./docs/"
+        "encoding": "utf8",
+        "destination": "./docs/",
+        "template": "node_modules/clean-jsdoc-theme",
+        "theme_opts": {
+            "theme": "dark"
+        }
     }
 }

@@ -1,25 +1,40 @@
-import ScooterHire from "../classes"
+const ScooterHire = require("./h_ScooterHire")
+//const ChargeStation = require("./h_ChargingStation")
+const Scooter = require("./h_Scooter");
+
 
 
 /**
  * @class ChargingStation object used to store ChargingStations Scooters are brought to
- * @extends ChargingStation
+ * @extends ScooterHire
  * @property {string} name Name of charging station
  * @property {number} totalPlaces Number of total places the charging station has
  * @property {number} usedPlaces Number of places used up by scooters in the charging station
  * @property {Array<Scooter>} chargingScooters List of the scooters charging at the charging station
  * @property {Array<Scooter>} chargedScooters List of fully charged scooters at the charging station
  */
-export class ChargingStation extends ScooterHire {
-    name = "Name_Undefined";
-    totalPlaces = 1;
-    usedPlaces = 0;
+class ChargingStation {
+    name;
+    totalPlaces;
+    usedPlaces;
 
     chargingScooters = [];
     chargedScooters = [];
 
+    /**
+     * 
+     * @param {string} name Name of the charging stations
+     * @param {number} totalPlaces Number of total places the charging station has
+     * @param {number} usedPlaces Number of places used up by scooters in the charging station
+     */
+    constructor(name="NameUndefined", totalPlaces=1){
+        this.name = name;
+        this.totalPlaces = totalPlaces;
+        this.usedPlaces = 0;
 
-    static userList = []
+        ScooterHire.chargingStations.push(this);
+    }
+
     /**
      * @param {Scooter} Scooter instance of Scooter
      * @description Method used to dock a Scooter to the charging station
@@ -35,7 +50,7 @@ export class ChargingStation extends ScooterHire {
      * @returns {void}
      */
     undockScooter(Scooter){
-
+        
     }
 
     /**
@@ -43,7 +58,8 @@ export class ChargingStation extends ScooterHire {
      * @returns {number}
      */
     getNumberOfFreePlaces(){
-
+        return this.totalPlaces - this.usedPlaces
     }
-
 }
+
+module.exports = ChargingStation;

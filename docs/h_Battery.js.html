@@ -26,7 +26,7 @@
     
 
 
-    <title>h_ScooterHire.js</title>
+    <title>h_Battery.js</title>
 
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -63,7 +63,7 @@
 
 <div id="main">
     
-    <h1 id='page-title' class="page-title">h_ScooterHire.js</h1>
+    <h1 id='page-title' class="page-title">h_Battery.js</h1>
     
 
     
@@ -73,61 +73,54 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>//const ScooterHire = require("./h_ScooterHire")
-const ChargingStation = require("./h_ChargingStation");
-const Scooter = require("./h_Scooter");
-const User = require("./h_User");
-const Battery = require("./h_Battery");
-
+            <pre class="prettyprint source linenums"><code>
 /**
- * @class Static Main Object of the Scooter Hire System
- * @property {Array&lt;Scooter>} allScooters List of every scooter
- * @property {Array&lt;Scooter>} availableScooters List of available scooters
- * @property {Array&lt;ChargingStation>} chargingStations List of Charging Stations
- * @property {Array&lt;User>} userList List of registered users
+ * @class Battery object that stores the battery the Scooter is using
+ * @property {string} userName List of every scooter
+ * @property {Scooter|null} availableScooters List of available scooters
  */
-class ScooterHire {
-    static name="test"
-    static allScooters = [];
+class Battery {
+    chargeLevel;
+    /**
+     * @param {string} userName 
+     */
+    constructor(){
+        this.chargeLevel = 100
+    }
     
-    static availableScooters = [];
-    static chargingStations = [];
-
-    static userList = [];
-
     /**
-     * @param {User} User instance of User
-     * @description Method used to add new scooter to list of scooters
+     * @description Method to charge the battery
      * @returns {void}
      */
-    static addUser(User){
-        this.userList.push(User);
+    charge(){
+
     }
 
     /**
-     * @param {Scooter} Scooter instance of Scooter
-     * @description  Method used to add new scooter to list of scooters
-     * @returns {void}
+     * @description Method to check if battery is charged
+     * @returns {boolean}
      */
-    static addScooter(Scooter){
-        this.allScooters.push(Scooter);
-    }
-
-    /**
-     * @param {string} userName username of the user
-     * @description Method used to find a user form userList, returns U
-     * @returns {User}
-     */
-    static getUser(userName){
-        for (let i = 0; i &lt; userList.length; i++){
-            if (userName == this.userList[i].userList) {
-                return userList[i]
-            }
+    isCharged(){
+        if (this.chargeLevel == 100){
+            return true
         }
+        else{
+            return false
+        }
+            
+    }
+
+    /**
+     * @description Method to get the charge level
+     * @returns {number}
+     */
+    getCharge(){
+        return this.chargeLevel   
     }
 }
 
-module.exports = ScooterHire</code></pre>
+module.exports = Battery;
+</code></pre>
         </article>
     </section>
 

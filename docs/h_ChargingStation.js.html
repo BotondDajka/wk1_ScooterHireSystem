@@ -26,7 +26,7 @@
     
 
 
-    <title>h_ScooterHire.js</title>
+    <title>h_ChargingStation.js</title>
 
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -63,7 +63,7 @@
 
 <div id="main">
     
-    <h1 id='page-title' class="page-title">h_ScooterHire.js</h1>
+    <h1 id='page-title' class="page-title">h_ChargingStation.js</h1>
     
 
     
@@ -73,61 +73,71 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>//const ScooterHire = require("./h_ScooterHire")
-const ChargingStation = require("./h_ChargingStation");
+            <pre class="prettyprint source linenums"><code>const ScooterHire = require("./h_ScooterHire")
+//const ChargeStation = require("./h_ChargingStation")
 const Scooter = require("./h_Scooter");
-const User = require("./h_User");
-const Battery = require("./h_Battery");
+
+
 
 /**
- * @class Static Main Object of the Scooter Hire System
- * @property {Array&lt;Scooter>} allScooters List of every scooter
- * @property {Array&lt;Scooter>} availableScooters List of available scooters
- * @property {Array&lt;ChargingStation>} chargingStations List of Charging Stations
- * @property {Array&lt;User>} userList List of registered users
+ * @class ChargingStation object used to store ChargingStations Scooters are brought to
+ * @extends ScooterHire
+ * @property {string} name Name of charging station
+ * @property {number} totalPlaces Number of total places the charging station has
+ * @property {number} usedPlaces Number of places used up by scooters in the charging station
+ * @property {Array&lt;Scooter>} chargingScooters List of the scooters charging at the charging station
+ * @property {Array&lt;Scooter>} chargedScooters List of fully charged scooters at the charging station
  */
-class ScooterHire {
-    static name="test"
-    static allScooters = [];
-    
-    static availableScooters = [];
-    static chargingStations = [];
+class ChargingStation {
+    name;
+    totalPlaces;
+    usedPlaces;
 
-    static userList = [];
+    chargingScooters = [];
+    chargedScooters = [];
 
     /**
-     * @param {User} User instance of User
-     * @description Method used to add new scooter to list of scooters
-     * @returns {void}
+     * 
+     * @param {string} name Name of the charging stations
+     * @param {number} totalPlaces Number of total places the charging station has
+     * @param {number} usedPlaces Number of places used up by scooters in the charging station
      */
-    static addUser(User){
-        this.userList.push(User);
+    constructor(name="NameUndefined", totalPlaces=1){
+        this.name = name;
+        this.totalPlaces = totalPlaces;
+        this.usedPlaces = 0;
+
+        ScooterHire.chargingStations.push(this);
     }
 
     /**
      * @param {Scooter} Scooter instance of Scooter
-     * @description  Method used to add new scooter to list of scooters
+     * @description Method used to dock a Scooter to the charging station
      * @returns {void}
      */
-    static addScooter(Scooter){
-        this.allScooters.push(Scooter);
+    dockScooter(Scooter){
+
     }
 
     /**
-     * @param {string} userName username of the user
-     * @description Method used to find a user form userList, returns U
-     * @returns {User}
+     * @param {Scooter} Scooter instance of Scooter
+     * @description Method used to undock a Scooter from the charging station
+     * @returns {void}
      */
-    static getUser(userName){
-        for (let i = 0; i &lt; userList.length; i++){
-            if (userName == this.userList[i].userList) {
-                return userList[i]
-            }
-        }
+    undockScooter(Scooter){
+        
+    }
+
+    /**
+     * @description Method used to get the number of free places at the charging station
+     * @returns {number}
+     */
+    getNumberOfFreePlaces(){
+        return this.totalPlaces - this.usedPlaces
     }
 }
 
-module.exports = ScooterHire</code></pre>
+module.exports = ChargingStation;</code></pre>
         </article>
     </section>
 

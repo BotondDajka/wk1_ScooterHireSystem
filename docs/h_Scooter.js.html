@@ -26,7 +26,7 @@
     
 
 
-    <title>h_ScooterHire.js</title>
+    <title>h_Scooter.js</title>
 
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -63,7 +63,7 @@
 
 <div id="main">
     
-    <h1 id='page-title' class="page-title">h_ScooterHire.js</h1>
+    <h1 id='page-title' class="page-title">h_Scooter.js</h1>
     
 
     
@@ -73,61 +73,65 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>//const ScooterHire = require("./h_ScooterHire")
-const ChargingStation = require("./h_ChargingStation");
-const Scooter = require("./h_Scooter");
-const User = require("./h_User");
-const Battery = require("./h_Battery");
+            <pre class="prettyprint source linenums"><code>const ScooterHire = require("./h_ScooterHire")
+//const Battery = require("./h_Battery");
 
 /**
- * @class Static Main Object of the Scooter Hire System
- * @property {Array&lt;Scooter>} allScooters List of every scooter
- * @property {Array&lt;Scooter>} availableScooters List of available scooters
- * @property {Array&lt;ChargingStation>} chargingStations List of Charging Stations
- * @property {Array&lt;User>} userList List of registered users
+ * @class Scooter object that stores the scooters at the Scooter Hire
+ * @property {string} serialNum Serial number of the scooter
+ * @property {boolean} isHired state of the scooter if its hired or not
+ * @property {boolean} isCharging state of the scooter if its charging or not
+ * @property {ChargingStation|null} chargingStationAttachedTo the instance of the charging station the scooter is attached to while charging and being docked
+ * @property {Battery} battery the instance of the battery the scooter contains
+ * @property {User|null} hiredBy the istance of the user who hired the scooter
  */
-class ScooterHire {
-    static name="test"
-    static allScooters = [];
-    
-    static availableScooters = [];
-    static chargingStations = [];
+class Scooter {
+    serialNum;
+    isHired;
 
-    static userList = [];
+    isCharging;
+    chargingStationAttachedTo;
 
-    /**
-     * @param {User} User instance of User
-     * @description Method used to add new scooter to list of scooters
-     * @returns {void}
-     */
-    static addUser(User){
-        this.userList.push(User);
-    }
+    battery;
+    hiredBy;
 
-    /**
-     * @param {Scooter} Scooter instance of Scooter
-     * @description  Method used to add new scooter to list of scooters
-     * @returns {void}
-     */
-    static addScooter(Scooter){
-        this.allScooters.push(Scooter);
-    }
+    constructor(){
+        this.isHired = false;
 
-    /**
-     * @param {string} userName username of the user
-     * @description Method used to find a user form userList, returns U
-     * @returns {User}
-     */
-    static getUser(userName){
-        for (let i = 0; i &lt; userList.length; i++){
-            if (userName == this.userList[i].userList) {
-                return userList[i]
+        this.isCharging = false;
+        this.chargingStationAttachedTo = null;
+
+        this.hiredBy = null;
+
+        // Makes sure there is no scooter with the same serial number
+        let tempNum = ScooterHire.allScooters.length + 1 ;
+        for(let i = 0; i &lt; ScooterHire.allScooters.length; i++){
+            if (ScooterHire.allScooters[i].serialNum == ("SN00"+tempNum)){
+                tempNum+=1
             }
         }
+        this.serialNum = "SN00"+ tempNum;
+        //this.battery = new Battery();
+
+
+
+        ScooterHire.allScooters.push(this);
     }
+
+    /**
+     * @param {number} time number of ms to use the scooter for (not the renting time)
+     * @description Method used to use the scooter which drains the battery
+     * @returns {void}
+     */
+    useScooter(time){
+        
+    }
+
+
 }
 
-module.exports = ScooterHire</code></pre>
+module.exports = Scooter;
+</code></pre>
         </article>
     </section>
 

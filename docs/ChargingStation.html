@@ -26,7 +26,7 @@
     
 
 
-    <title>ScooterHire</title>
+    <title>ChargingStation</title>
 
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -63,7 +63,7 @@
 
 <div id="main">
     
-    <h1 id='page-title' class="page-title">ScooterHire</h1>
+    <h1 id='page-title' class="page-title">ChargingStation</h1>
     
 
     
@@ -79,12 +79,12 @@
         
         <h2>
         
-        ScooterHire
+        ChargingStation
         
         </h2>
         
         
-            <div class="class-description">Static Main Object of the Scooter Hire System</div>
+            <div class="class-description">ChargingStation object used to store ChargingStations Scooters are brought to</div>
             <hr/>
         
     
@@ -100,9 +100,9 @@
         <h2>Constructor</h2>
     
 
-    <h4 class="name" id="ScooterHire">
-        <a href="#ScooterHire">#</a>
-        <span class="type-signature"></span>new ScooterHire<span class="signature">()</span><span class="type-signature"></span>
+    <h4 class="name" id="ChargingStation">
+        <a href="#ChargingStation">#</a>
+        <span class="type-signature"></span>new ChargingStation<span class="signature">(name, totalPlaces, usedPlaces)</span><span class="type-signature"></span>
     </h4>
 
     
@@ -116,6 +116,121 @@
 
 
 
+
+    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+        <strong>Parameters:</strong>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    NameUndefined
+                
+                </td>
+            
+
+            <td class="description last">Name of the charging stations</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>totalPlaces</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    1
+                
+                </td>
+            
+
+            <td class="description last">Number of total places the charging station has</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>usedPlaces</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">Number of places used up by scooters in the charging station</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
 
 
 
@@ -147,7 +262,76 @@
 
         <tr>
             
-                <td class="name"><code>allScooters</code></td>
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Name of charging station</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>totalPlaces</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Number of total places the charging station has</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>usedPlaces</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Number of places used up by scooters in the charging station</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>chargingScooters</code></td>
             
 
             <td class="type">
@@ -163,14 +347,14 @@
 
             
 
-            <td class="description last">List of every scooter</td>
+            <td class="description last">List of the scooters charging at the charging station</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>availableScooters</code></td>
+                <td class="name"><code>chargedScooters</code></td>
             
 
             <td class="type">
@@ -186,53 +370,7 @@
 
             
 
-            <td class="description last">List of available scooters</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>chargingStations</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;<a href="ChargingStation.html">ChargingStation</a>></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">List of Charging Stations</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>userList</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;<a href="User.html">User</a>></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">List of registered users</td>
+            <td class="description last">List of fully charged scooters at the charging station</td>
         </tr>
 
     
@@ -272,7 +410,7 @@
         <div class="details-item-container">
             <dt class="tag-source">Source:</dt>
             <dd class="tag-source"><ul class="dummy"><li>
-                <a href="h_ScooterHire.js.html">h_ScooterHire.js</a>, <a href="h_ScooterHire.js.html#line14">line 14</a>
+                <a href="h_ChargingStation.js.html">h_ChargingStation.js</a>, <a href="h_ChargingStation.js.html#line16">line 16</a>
             </li></ul></dd>
         </div>
     
@@ -303,6 +441,17 @@
     </div>
 
     
+        <h3 class="subsection-title">Extends</h3>
+
+        
+
+
+    <ul>
+        <li><a href="ScooterHire.html">ScooterHire</a></li>
+    </ul>
+
+
+    
 
     
 
@@ -322,9 +471,9 @@
 
     
 
-    <h4 class="name" id=".addScooter">
-        <a href="#.addScooter">#</a>
-        <span class="type-signature">(static) </span>addScooter<span class="signature">(Scooter)</span><span class="type-signature"> &rarr; {void}</span>
+    <h4 class="name" id="dockScooter">
+        <a href="#dockScooter">#</a>
+        <span class="type-signature"></span>dockScooter<span class="signature">(Scooter)</span><span class="type-signature"> &rarr; {void}</span>
     </h4>
 
     
@@ -332,7 +481,7 @@
 
 
     <div class="description">
-        Method used to add new scooter to list of scooters
+        Method used to dock a Scooter to the charging station
     </div>
 
 
@@ -428,7 +577,7 @@
         <div class="details-item-container">
             <dt class="tag-source">Source:</dt>
             <dd class="tag-source"><ul class="dummy"><li>
-                <a href="h_ScooterHire.js.html">h_ScooterHire.js</a>, <a href="h_ScooterHire.js.html#line37">line 37</a>
+                <a href="h_ChargingStation.js.html">h_ChargingStation.js</a>, <a href="h_ChargingStation.js.html#line43">line 43</a>
             </li></ul></dd>
         </div>
     
@@ -480,9 +629,9 @@
 
     
 
-    <h4 class="name" id=".addUser">
-        <a href="#.addUser">#</a>
-        <span class="type-signature">(static) </span>addUser<span class="signature">(User)</span><span class="type-signature"> &rarr; {void}</span>
+    <h4 class="name" id="getNumberOfFreePlaces">
+        <a href="#getNumberOfFreePlaces">#</a>
+        <span class="type-signature"></span>getNumberOfFreePlaces<span class="signature">()</span><span class="type-signature"> &rarr; {number}</span>
     </h4>
 
     
@@ -490,7 +639,114 @@
 
 
     <div class="description">
-        Method used to add new scooter to list of scooters
+        Method used to get the number of free places at the charging station
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="tag-source">Source:</dt>
+            <dd class="tag-source"><ul class="dummy"><li>
+                <a href="h_ChargingStation.js.html">h_ChargingStation.js</a>, <a href="h_ChargingStation.js.html#line60">line 60</a>
+            </li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container mt-20">
+    <strong>Returns:</strong>
+        
+            
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">number</span>
+
+
+    </dd>
+</dl>
+
+    </div>
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="undockScooter">
+        <a href="#undockScooter">#</a>
+        <span class="type-signature"></span>undockScooter<span class="signature">(Scooter)</span><span class="type-signature"> &rarr; {void}</span>
+    </h4>
+
+    
+
+
+
+    <div class="description">
+        Method used to undock a Scooter from the charging station
     </div>
 
 
@@ -527,13 +783,13 @@
 
         <tr>
             
-                <td class="name"><code>User</code></td>
+                <td class="name"><code>Scooter</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><a href="User.html">User</a></span>
+<span class="param-type"><a href="Scooter.html">Scooter</a></span>
 
 
             
@@ -543,7 +799,7 @@
 
             
 
-            <td class="description last">instance of User</td>
+            <td class="description last">instance of Scooter</td>
         </tr>
 
     
@@ -586,7 +842,7 @@
         <div class="details-item-container">
             <dt class="tag-source">Source:</dt>
             <dd class="tag-source"><ul class="dummy"><li>
-                <a href="h_ScooterHire.js.html">h_ScooterHire.js</a>, <a href="h_ScooterHire.js.html#line28">line 28</a>
+                <a href="h_ChargingStation.js.html">h_ChargingStation.js</a>, <a href="h_ChargingStation.js.html#line52">line 52</a>
             </li></ul></dd>
         </div>
     
@@ -623,164 +879,6 @@
     <dd>
         
 <span class="param-type">void</span>
-
-
-    </dd>
-</dl>
-
-    </div>
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".getUser">
-        <a href="#.getUser">#</a>
-        <span class="type-signature">(static) </span>getUser<span class="signature">(userName)</span><span class="type-signature"> &rarr; {<a href="User.html">User</a>}</span>
-    </h4>
-
-    
-
-
-
-    <div class="description">
-        Method used to find a user form userList, returns U
-    </div>
-
-
-
-
-
-
-
-
-
-    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
-        <strong>Parameters:</strong>
-        
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>userName</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">username of the user</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    </div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <div class="details-item-container">
-            <dt class="tag-source">Source:</dt>
-            <dd class="tag-source"><ul class="dummy"><li>
-                <a href="h_ScooterHire.js.html">h_ScooterHire.js</a>, <a href="h_ScooterHire.js.html#line46">line 46</a>
-            </li></ul></dd>
-        </div>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <div class="method-member-container mt-20">
-    <strong>Returns:</strong>
-        
-            
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type"><a href="User.html">User</a></span>
 
 
     </dd>

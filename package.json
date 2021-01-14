@@ -4,11 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --coverage=true"
+    "test": "jest --coverage=true",
+    "generate-docs": "node_modules/.bin/jsdoc --configure .jsdoc.json --verbose"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "clean-jsdoc-theme": "^3.0.6",
     "fs": "0.0.1-security",
     "jest": "^26.6.3",
     "jsdoc": "^3.6.6"
