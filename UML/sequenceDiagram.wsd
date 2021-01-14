@@ -1,0 +1,43 @@
+@startuml
+
+    title Scooter Hire - Rent Scooter (Normal Flow)
+
+    actor User
+
+    entity Scooter
+    participant ChargeStation
+    participant ScooterHireSystem
+
+
+    User -> ChargeStation : Puts in details
+    ChargeStation -> ScooterHireSystem : Authentication Request
+    ScooterHireSystem -> ScooterHireSystem : Find user account
+    ChargeStation <-- ScooterHireSystem : Authentication Response
+    User <-- ChargeStation : Access granted
+
+    User -> ChargeStation : is Scooter Available
+    ChargeStation -> ChargeStation : Check for available scooters
+    User <-- ChargeStation : Availability Response
+
+
+    User -> ChargeStation : Rent Scooter
+    ChargeStation -> ScooterHireSystem : Autherize payment
+
+    ScooterHireSystem -> ScooterHireSystem : Calculate price
+    ScooterHireSystem -> ScooterHireSystem : Create payment
+
+    ScooterHireSystem --> ChargeStation : Payment form
+
+    ChargeStation -> User : Request Payment
+
+    User --> ChargeStation : Make payment
+    ChargeStation --> ScooterHireSystem : Validate Payment
+    ScooterHireSystem -> ScooterHireSystem : is Payment valid
+    
+    ScooterHireSystem --> ChargeStation : Validation response
+
+    ChargeStation -> Scooter : Assign to user
+    Scooter --> ChargeStation : Assigned response
+
+    ChargeStation --> User : Scooter rent details response
+@enduml

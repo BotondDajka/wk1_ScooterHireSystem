@@ -1,0 +1,27 @@
+@startuml
+
+    title Scooter Hire - Return Scooter (Normal Flow)
+
+    actor User
+
+    entity Scooter
+    participant ChargeStation
+    participant ScooterHireSystem
+
+    User -> ChargeStation : Returns scooter(Scooter)
+
+    ChargeStation -> Scooter : Request to unassign from user
+    Scooter --> ChargeStation 
+
+    ChargeStation -> ScooterHireSystem : User returned scooter
+    ScooterHireSystem -> ScooterHireSystem : Remove scooter from user
+    ScooterHireSystem --> ChargeStation
+    ChargeStation --> User 
+
+    ChargeStation -> Scooter : Begin charging
+    Scooter -> Scooter : Charging
+
+    Scooter --> ChargeStation : Charge complete
+
+    ChargeStation -> ChargeStation : Update Scooter avalibility list
+@enduml

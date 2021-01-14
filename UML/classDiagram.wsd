@@ -1,0 +1,136 @@
+@startuml
+
+title Scooter Hire System - Diagram
+
+    class ScooterHire <<static>> {
+        ..Relations..
+        +{static} Array<Scooter> allScooters
+        +{static} Array<Scooter> availableScooters
+        +{static} Array<ChargeStation> ChargeStationList
+        -{static} Array<User> userList
+
+        __Methods__
+        ..Setters..
+        +void addUser(User)
+        #void addScooter(Scooter)
+        ..Getters..
+        -User getUser(userName)
+        +Scooter getAvailableScooter()
+    }
+
+
+    class ChargeStation {
+        +string name
+        +number totalPlaces
+        +number usedPlaces
+        ..Relations..
+        +Array<Scooter> chargingScooters
+        +Array<Scooter> chargedScooters
+
+        __Methods__
+        ..Setters...
+        +void dockScooter(Scooter)
+        +void undockScooter(Scooter)
+        ..Getters..
+        +number getNumberOfFreePlaces()
+    }
+
+    class Battery {
+        +number chargeLevel
+
+        __Methods__
+        ..Setters..
+        +void charge()
+        ..Getters..
+        +bool isCharged()
+        +number getCharge()
+    }
+
+    class Scooter {
+        +<<const>> string serialNum    
+        +bool isHired
+        +bool isCharging
+        ..Relations..
+        -Battery battery
+        +User hiredBy
+        +ChargeStation chargeStationAttachedTo
+        __Methods__
+        +void useScooter(time)
+    }
+
+    class User {
+        -string fullName
+        -string userName
+        ..Relations..
+        +Scooter hiredScooter
+        
+        __Methods__
+        +void returnScooter()
+        ..Setters..
+        +void setHiredScooter(Scooter)
+        ..Getters..
+        +Scooter getScooterAtStation(stationName)
+    }
+
+    
+    
+
+
+    ScooterHire "1" *-- "0..*" User :contains
+
+
+    Scooter "1" *-- "1" Battery :contains
+
+
+    Scooter "0..*" -- "0..1" ChargeStation :charge/hold
+
+    User "0..1" --  "0..1" Scooter :hires
+
+    ChargeStation --|> ScooterHire
+    ChargeStation "1..*" --* "1" ScooterHire
+
+    Scooter "1..*" ---o "1" ScooterHire 
+
+
+
+' class Airport {
+'     String name
+'     __ Getters __
+'     Object getInfo()
+' }
+
+' class Plane {
+'     Array<Passenger> passengers
+'     Array<Crewmember> crew
+'     Airport destination
+'     __ Setters __
+'     void board(Passenger)
+'     void setCrew(Array<Crewmember>)
+' }
+
+' class Bag {
+'     String weight
+' }
+
+' class Person {
+'     String name
+'     Array<Bag> bags
+' }
+
+' class Crewmember {
+'     String role
+' }
+
+' class Passenger {
+'     String ticketNumber
+' }
+
+' Person <|-- Crewmember
+' Person <|-- Passenger
+' Person  -- "0..*" Bag : contains
+
+' Plane --  "0..*" Passenger : contains
+' Plane -- "0..*" Crewmember : contains
+' Plane -- "1" Airport : contains
+
+@enduml

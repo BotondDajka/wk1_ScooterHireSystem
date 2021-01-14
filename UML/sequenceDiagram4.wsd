@@ -1,0 +1,13 @@
+@startuml
+
+    title Scooter Hire - Use Scooter (Normal Flow)
+
+    actor User
+
+    entity Scooter
+
+    User -> Scooter : Gives throtle / Breaks
+    Scooter -> Scooter : adjusts speed
+    Scooter -> Scooter : battery charge used up
+    Scooter --> User : Display updated with speed and battery charge
+@enduml

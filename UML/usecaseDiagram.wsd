@@ -1,0 +1,41 @@
+@startuml
+
+    title Scooter Hire - Use Case DiagramBorderColor
+
+    left to right direction
+
+    :User:
+
+    rectangle ScooterHire {
+        usecase "Rent Scooter" as rent
+        usecase "Charge Scooter" as charge
+        usecase "Return Scooter" as return
+        usecase "Use Scooter" as use
+
+        User --> rent
+        User --> charge
+        User --> return
+        User --> use
+    }
+
+    left to right direction
+
+    skinparam actorStyle awesome
+    :Maintainer:
+
+    rectangle Maintenance{
+        usecase "Repair" as repair
+        usecase "Get new scooter" as getNew
+        usecase "Remove old scooter" as remOld
+    }
+
+    Maintainer --> repair
+    Maintainer --> getNew
+    Maintainer --> remOld
+    Maintainer --> use
+    Maintainer --> charge
+    Maintainer --> return
+
+    User <..> Maintainer
+
+@enduml

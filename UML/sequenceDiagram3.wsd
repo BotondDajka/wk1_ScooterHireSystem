@@ -1,0 +1,16 @@
+@startuml
+
+    title Scooter Hire - Charge Scooter (Normal Flow)
+
+    actor User
+
+    entity Scooter
+    participant ChargeStation
+
+    User -> ChargeStation : chargeScooter(Scooter)
+    ChargeStation -> Scooter : charge
+    Scooter --> ChargeStation : startedCharging
+    Scooter -> Scooter : charging
+    Scooter -> ChargeStation : Charge Finished
+    ChargeStation --> User : Charging Completed
+@enduml
