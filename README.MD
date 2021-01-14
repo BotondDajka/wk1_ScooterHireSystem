@@ -1,2 +1,2 @@
 
-## [**JSDoc Documentation**](botonddajka.github.io/wk1_ScooterHireSystem)
+## [**JSDoc Documentation**](https://botonddajka.github.io/wk1_ScooterHireSystem)
