@@ -1,6 +1,6 @@
-const ChargingStation = require("./h_ChargingStation")
-const ScooterHire = require("./h_ScooterHire")
-const Scooter = require("./h_Scooter.js")
+const ChargingStation = require("./classes/h_ChargingStation")
+const ScooterHire = require("./classes/h_ScooterHire")
+const Scooter = require("./classes/h_Scooter.js")
 
 const myHire = new ScooterHire();
 
