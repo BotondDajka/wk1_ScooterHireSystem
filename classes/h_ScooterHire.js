@@ -1,8 +1,3 @@
-//const ScooterHire = require("./h_ScooterHire")
-const ChargingStation = require("./h_ChargingStation");
-const Scooter = require("./h_Scooter");
-const User = require("./h_User");
-const Battery = require("./h_Battery");
 
 /**
  * @class Static Main Object of the Scooter Hire System

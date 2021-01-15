@@ -11,20 +11,20 @@ console.log(ScooterHire)
 
 
 let myScooter1 = new Scooter()
-// let myScooter2 = new Scooter()
-// let myScooter3 = new Scooter()
+let myScooter2 = new Scooter()
+let myScooter3 = new Scooter()
 
 
-// console.log("Scooter1 " + myScooter1.serialNum)
-// console.log("Scooter2 " + myScooter2.serialNum)
+console.log("Scooter1 " + myScooter1.serialNum)
+console.log("Scooter2 " + myScooter2.serialNum)
 
-// console.log("Scooter3 " + myScooter3.serialNum)
-// myScooter3.serialNum = "SN004"
-// console.log("Scooter3 after change " + myScooter3.serialNum)
+console.log("Scooter3 " + myScooter3.serialNum)
+myScooter3.serialNum = "SN004"
+console.log("Scooter3 after change " + myScooter3.serialNum)
 
-// let myScooter4 = new Scooter()
+let myScooter4 = new Scooter()
 
-// console.log("Scooter4 " + myScooter4.serialNum + "<-- This should be unique too")
+console.log("Scooter4 " + myScooter4.serialNum + "<-- This should be unique too")
 
 
 
