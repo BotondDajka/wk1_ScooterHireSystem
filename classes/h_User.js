@@ -3,6 +3,7 @@ const ChargingStation = require("./h_ChargingStation");
 const Scooter = require("./h_Scooter");
 //const User = require("./h_User");
 const Battery = require("./h_Battery");
+const { chargingStations } = require("./h_ScooterHire");
 
 /**
  * @class User object that stores the registered users
@@ -10,8 +11,8 @@ const Battery = require("./h_Battery");
  * @property {Scooter|null} availableScooters List of available scooters
  */
 class User {
-    userName;
-    hiredScooter;
+    userName; // string
+    hiredScooter;  // Scooter
     
     /**
      * @param {string} userName 
@@ -44,7 +45,17 @@ class User {
      * @returns {Scooter}
      */
     getScooterAtStation(stationName){
-        
+        for (let i = 0; i < ScooterHire.chargingStations.length; i++){
+            if (stationName == ScooterHire.chargingStations[i]){
+                for (let i2 = 0; i2 < ScooterHire.chargingStations[i].chargedScooters.length; i2++){
+                    if (ScooterHire.chargingStations[i].chargedScooters[i2].isHired == false){
+                        return ScooterHire.chargingStations[i].chargedScooters[i2];
+                    }
+                }
+                return null;
+            }
+        }
+        throw new Error(`Given station \"${stationName}\"doesn't exist`);
     }
 }
 

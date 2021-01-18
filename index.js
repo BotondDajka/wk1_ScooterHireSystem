@@ -28,5 +28,20 @@ console.log("Scooter4 " + myScooter4.serialNum + "<-- This should be unique too"
 
 
 
+    // myScooter1.battery.chargeLevel = 0;
+    // myScooter1.battery.charge(()=>{});
+
+    const readline = require('readline');
+
+
+    const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout
+    });
+
+    rl.question(">", (answer)=>{
+        console.log(answer+answer)
+    });
+
 
 

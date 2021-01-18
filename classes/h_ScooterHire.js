@@ -7,13 +7,12 @@
  * @property {Array<User>} userList List of registered users
  */
 class ScooterHire {
-    static name="test"
-    static allScooters = [];
+    static allScooters = []; // Scooter
     
-    static availableScooters = [];
-    static chargingStations = [];
+    static availableScooters = []; // Scooter
+    static chargingStations = []; // ChargingStation
 
-    static userList = [];
+    static userList = []; // User
 
     /**
      * @param {User} User instance of User
@@ -35,12 +34,25 @@ class ScooterHire {
 
     /**
      * @param {string} userName username of the user
-     * @description Method used to find a user form userList, returns U
+     * @description Method used to find a user form userList, returns User
      * @returns {User}
      */
     static getUser(userName){
         for (let i = 0; i < userList.length; i++){
-            if (userName == this.userList[i].userList) {
+            if (userName == this.userList[i].userName) {
+                return userList[i]
+            }
+        }
+    }
+
+    /**
+     * @param {string} serialNum scooter serial number
+     * @description Method used to find a scooter from the scooter list
+     * @returns {Scooter}
+     */
+    static getScooter(serialNum){
+        for (let i = 0; i < allScooter.length; i++){
+            if (serialNum == this.allScooters[i].serialNum) {
                 return userList[i]
             }
         }

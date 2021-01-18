@@ -1,29 +1,27 @@
 const ScooterHire = require("./h_ScooterHire")
-//const Battery = require("./h_Battery");
+const Battery = require("./h_Battery");
+const ChargingStation = require("./h_ChargingStation");
 
 /**
  * @class Scooter object that stores the scooters at the Scooter Hire
  * @property {string} serialNum Serial number of the scooter
  * @property {boolean} isHired state of the scooter if its hired or not
- * @property {boolean} isCharging state of the scooter if its charging or not
  * @property {ChargingStation|null} chargingStationAttachedTo the instance of the charging station the scooter is attached to while charging and being docked
  * @property {Battery} battery the instance of the battery the scooter contains
  * @property {User|null} hiredBy the istance of the user who hired the scooter
  */
 class Scooter {
-    serialNum;
-    isHired;
+    serialNum; // string
+    isHired; // bool
 
-    isCharging;
-    chargingStationAttachedTo;
+    chargingStationAttachedTo; // ChargingStation
 
-    battery;
-    hiredBy;
+    battery; // Battery
+    hiredBy; // bool
 
     constructor(){
         this.isHired = false;
 
-        this.isCharging = false;
         this.chargingStationAttachedTo = null;
 
         this.hiredBy = null;
@@ -36,20 +34,39 @@ class Scooter {
             }
         }
         this.serialNum = "SN00"+ tempNum;
-        //this.battery = new Battery();
+        this.battery = new Battery();
 
 
 
-        ScooterHire.allScooters.push(this);
+        ScooterHire.allScooters.push(this); // Illigal OOP thing but OOP in JS is already illegal so ¯\_(ツ)_/¯
     }
 
     /**
-     * @param {number} time number of ms to use the scooter for (not the renting time)
+     * @param {number} time number of minutes to use the scooter for (not the renting time)
      * @description Method used to use the scooter which drains the battery
      * @returns {void}
      */
     useScooter(time){
-        
+        this.battery.use(time);
+        console.log(`Remaining charge: ${this.chargeLevel}%`);
+    }
+
+
+    /**
+     * @param {ChargingStation} ChargingStation instance of charging station where scooters are charged
+     * @description Method used to dock a scooter to a charging station
+     * @returns {void}
+     */
+    setChargingStation(ChargingStation){
+        this.chargingStationAttachedTo = ChargingStation;
+    }
+
+    /**
+     * @description Method used to undock a scooter to a charging station
+     * @returns {void}
+     */
+    removeChargingStation(){
+        this.chargingStationAttachedTo = null;
     }
 
 

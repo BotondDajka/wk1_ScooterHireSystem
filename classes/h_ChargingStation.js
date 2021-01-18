@@ -14,12 +14,12 @@ const Scooter = require("./h_Scooter");
  * @property {Array<Scooter>} chargedScooters List of fully charged scooters at the charging station
  */
 class ChargingStation {
-    name;
-    totalPlaces;
-    usedPlaces;
+    name; // string
+    totalPlaces; // number
+    usedPlaces; // number
 
-    chargingScooters = [];
-    chargedScooters = [];
+    chargingScooters = []; // Scooter
+    chargedScooters = []; // Scooter
 
     /**
      * 
@@ -41,7 +41,7 @@ class ChargingStation {
      * @returns {void}
      */
     dockScooter(Scooter){
-
+        Scooter.setChargingStation(this);
     }
 
     /**
@@ -50,7 +50,7 @@ class ChargingStation {
      * @returns {void}
      */
     undockScooter(Scooter){
-        
+        Scooter.removeChargingStation();
     }
 
     /**
