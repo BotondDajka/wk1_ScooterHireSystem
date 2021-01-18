@@ -42,9 +42,14 @@ class ChargingStation {
      * @returns {void}
      */
     dockScooter(Scooter){
-        this.usedPlaces +=1
-        this.dockedScooters.push(Scooter);
-        Scooter.setChargingStation(this);
+        if (this.getNumberOfFreePlaces() >= 1){
+            this.usedPlaces +=1
+            this.dockedScooters.push(Scooter);
+            Scooter.setChargingStation(this);
+        }
+        else{
+            throw new Error("Can't dock scooter to station if its full");
+        }
     }
 
     /**
