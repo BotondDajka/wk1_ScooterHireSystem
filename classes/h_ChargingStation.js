@@ -1,5 +1,4 @@
 const ScooterHire = require("./h_ScooterHire")
-//const ChargeStation = require("./h_ChargingStation")
 const Scooter = require("./h_Scooter");
 
 
@@ -10,6 +9,7 @@ const Scooter = require("./h_Scooter");
  * @property {string} name Name of charging station
  * @property {number} totalPlaces Number of total places the charging station has
  * @property {number} usedPlaces Number of places used up by scooters in the charging station
+ * @property {Array<Scooter>} dockedScooters List of scooters in the station
  * @property {Array<Scooter>} chargingScooters List of the scooters charging at the charging station
  * @property {Array<Scooter>} chargedScooters List of fully charged scooters at the charging station
  */
@@ -18,6 +18,7 @@ class ChargingStation {
     totalPlaces; // number
     usedPlaces; // number
 
+    dockedScooters  = []; // Scooter
     chargingScooters = []; // Scooter
     chargedScooters = []; // Scooter
 
@@ -41,6 +42,8 @@ class ChargingStation {
      * @returns {void}
      */
     dockScooter(Scooter){
+        this.usedPlaces +=1
+        this.dockedScooters.push(Scooter);
         Scooter.setChargingStation(this);
     }
 
@@ -50,6 +53,9 @@ class ChargingStation {
      * @returns {void}
      */
     undockScooter(Scooter){
+        let index = this.dockedScooters.indexOf(Scooter);
+        this.usedPlaces -=1
+        this.dockedScooters.splice(index, 1);
         Scooter.removeChargingStation();
     }
 
