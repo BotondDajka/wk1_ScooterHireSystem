@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1610979272018" clover="3.2.0">
-  <project timestamp="1610979272018" name="All files">
+<coverage generated="1610980406306" clover="3.2.0">
+  <project timestamp="1610980406307" name="All files">
     <metrics statements="65" coveredstatements="54" conditionals="14" coveredconditionals="9" methods="18" coveredmethods="13" elements="97" coveredelements="76" complexity="0" loc="65" ncloc="65" packages="1" files="4" classes="4"/>
     <file name="h_Battery.js" path="D:\Users\dajka\Desktop\bootcamp\wk1\wk1_ScooterHireSystem\classes\h_Battery.js">
       <metrics statements="16" coveredstatements="16" conditionals="6" coveredconditionals="6" methods="6" coveredmethods="6"/>
