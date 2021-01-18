@@ -48,7 +48,7 @@ class Scooter {
      */
     useScooter(time){
         this.battery.use(time);
-        console.log(`Remaining charge: ${this.chargeLevel}%`);
+        console.log(`Remaining charge: ${this.chargeLevel}%`); // debug
     }
 
 
