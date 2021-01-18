@@ -51,9 +51,9 @@ class ScooterHire {
      * @returns {Scooter}
      */
     static getScooter(serialNum){
-        for (let i = 0; i < allScooter.length; i++){
+        for (let i = 0; i < this.allScooters.length; i++){
             if (serialNum == this.allScooters[i].serialNum) {
-                return userList[i]
+                return this.allScooters[i]
             }
         }
     }
