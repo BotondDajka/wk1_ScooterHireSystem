@@ -38,9 +38,9 @@ class ScooterHire {
      * @returns {User}
      */
     static getUser(userName){
-        for (let i = 0; i < userList.length; i++){
+        for (let i = 0; i < this.userList.length; i++){
             if (userName == this.userList[i].userName) {
-                return userList[i]
+                return this.userList[i]
             }
         }
     }

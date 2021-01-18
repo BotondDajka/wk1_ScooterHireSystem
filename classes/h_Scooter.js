@@ -37,8 +37,7 @@ class Scooter {
         this.battery = new Battery();
 
 
-
-        ScooterHire.allScooters.push(this); // Illigal OOP thing but OOP in JS is already illegal so ¯\_(ツ)_/¯
+        ScooterHire.addScooter(this); // Illigal OOP thing but OOP in JS is already illegal so ¯\_(ツ)_/¯
     }
 
     /**

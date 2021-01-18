@@ -19,7 +19,8 @@ class User {
      */
     constructor(userName){
         this.userName = userName;
-        ScooterHire.addUser(this);
+
+        ScooterHire.addUser(this); // Illigal OOP thing but OOP in JS is already illegal so ¯\_(ツ)_/¯
     }
     
     /**
