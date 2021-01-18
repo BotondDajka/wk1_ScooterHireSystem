@@ -58,7 +58,7 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav>
-    <h2><a href="index.html"><div class="text">Home</div></a></h2><div class="search-box"><input type="text" placeholder="Search..." id="search-box" /><div class="search-item-container" id="search-item-container"><ul class="search-item-ul" id="search-item-ul"></ul></div></div><div class="sidebar-list-div"><h3>Classes</h3><ul><li><a href="Battery.html">Battery</a><ul class='methods'><li data-type='method'><a href="Battery.html#charge">charge</a></li><li data-type='method'><a href="Battery.html#getCharge">getCharge</a></li><li data-type='method'><a href="Battery.html#isCharged">isCharged</a></li></ul></li><li><a href="ChargingStation.html">ChargingStation</a><ul class='methods'><li data-type='method'><a href="ChargingStation.html#dockScooter">dockScooter</a></li><li data-type='method'><a href="ChargingStation.html#getNumberOfFreePlaces">getNumberOfFreePlaces</a></li><li data-type='method'><a href="ChargingStation.html#undockScooter">undockScooter</a></li></ul></li><li><a href="Scooter.html">Scooter</a><ul class='methods'><li data-type='method'><a href="Scooter.html#useScooter">useScooter</a></li></ul></li><li><a href="ScooterHire.html">ScooterHire</a><ul class='methods'><li data-type='method'><a href="ScooterHire.html#.addScooter">addScooter</a></li><li data-type='method'><a href="ScooterHire.html#.addUser">addUser</a></li><li data-type='method'><a href="ScooterHire.html#.getUser">getUser</a></li></ul></li><li><a href="User.html">User</a><ul class='methods'><li data-type='method'><a href="User.html#getScooterAtStation">getScooterAtStation</a></li><li data-type='method'><a href="User.html#returnScooter">returnScooter</a></li><li data-type='method'><a href="User.html#setHiredScooter">setHiredScooter</a></li></ul></li></ul></div>
+    <h2><a href="index.html"><div class="text">Home</div></a></h2><div class="search-box"><input type="text" placeholder="Search..." id="search-box" /><div class="search-item-container" id="search-item-container"><ul class="search-item-ul" id="search-item-ul"></ul></div></div><div class="sidebar-list-div"><h3>Classes</h3><ul><li><a href="Battery.html">Battery</a><ul class='methods'><li data-type='method'><a href="Battery.html#charge">charge</a></li><li data-type='method'><a href="Battery.html#getCharge">getCharge</a></li><li data-type='method'><a href="Battery.html#isCharged">isCharged</a></li><li data-type='method'><a href="Battery.html#use">use</a></li></ul></li><li><a href="ChargingStation.html">ChargingStation</a><ul class='methods'><li data-type='method'><a href="ChargingStation.html#dockScooter">dockScooter</a></li><li data-type='method'><a href="ChargingStation.html#getNumberOfFreePlaces">getNumberOfFreePlaces</a></li><li data-type='method'><a href="ChargingStation.html#undockScooter">undockScooter</a></li></ul></li><li><a href="Scooter.html">Scooter</a><ul class='methods'><li data-type='method'><a href="Scooter.html#removeChargingStation">removeChargingStation</a></li><li data-type='method'><a href="Scooter.html#setChargingStation">setChargingStation</a></li><li data-type='method'><a href="Scooter.html#useScooter">useScooter</a></li></ul></li><li><a href="ScooterHire.html">ScooterHire</a><ul class='methods'><li data-type='method'><a href="ScooterHire.html#.addScooter">addScooter</a></li><li data-type='method'><a href="ScooterHire.html#.addUser">addUser</a></li><li data-type='method'><a href="ScooterHire.html#.getScooter">getScooter</a></li><li data-type='method'><a href="ScooterHire.html#.getUser">getUser</a></li></ul></li><li><a href="User.html">User</a><ul class='methods'><li data-type='method'><a href="User.html#getScooterAtStation">getScooterAtStation</a></li><li data-type='method'><a href="User.html#returnScooter">returnScooter</a></li><li data-type='method'><a href="User.html#setHiredScooter">setHiredScooter</a></li></ul></li></ul></div>
 </nav>
 
 <div id="main">
@@ -74,31 +74,29 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>const ScooterHire = require("./h_ScooterHire")
-//const Battery = require("./h_Battery");
+const Battery = require("./h_Battery");
+const ChargingStation = require("./h_ChargingStation");
 
 /**
  * @class Scooter object that stores the scooters at the Scooter Hire
  * @property {string} serialNum Serial number of the scooter
  * @property {boolean} isHired state of the scooter if its hired or not
- * @property {boolean} isCharging state of the scooter if its charging or not
  * @property {ChargingStation|null} chargingStationAttachedTo the instance of the charging station the scooter is attached to while charging and being docked
  * @property {Battery} battery the instance of the battery the scooter contains
  * @property {User|null} hiredBy the istance of the user who hired the scooter
  */
 class Scooter {
-    serialNum;
-    isHired;
+    serialNum; // string
+    isHired; // bool
 
-    isCharging;
-    chargingStationAttachedTo;
+    chargingStationAttachedTo; // ChargingStation
 
-    battery;
-    hiredBy;
+    battery; // Battery
+    hiredBy; // bool
 
     constructor(){
         this.isHired = false;
 
-        this.isCharging = false;
         this.chargingStationAttachedTo = null;
 
         this.hiredBy = null;
@@ -111,20 +109,39 @@ class Scooter {
             }
         }
         this.serialNum = "SN00"+ tempNum;
-        //this.battery = new Battery();
+        this.battery = new Battery();
 
 
 
-        ScooterHire.allScooters.push(this);
+        ScooterHire.allScooters.push(this); // Illigal OOP thing but OOP in JS is already illegal so ¯\_(ツ)_/¯
     }
 
     /**
-     * @param {number} time number of ms to use the scooter for (not the renting time)
+     * @param {number} time number of minutes to use the scooter for (not the renting time)
      * @description Method used to use the scooter which drains the battery
      * @returns {void}
      */
     useScooter(time){
-        
+        this.battery.use(time);
+        console.log(`Remaining charge: ${this.chargeLevel}%`);
+    }
+
+
+    /**
+     * @param {ChargingStation} ChargingStation instance of charging station where scooters are charged
+     * @description Method used to dock a scooter to a charging station
+     * @returns {void}
+     */
+    setChargingStation(ChargingStation){
+        this.chargingStationAttachedTo = ChargingStation;
+    }
+
+    /**
+     * @description Method used to undock a scooter to a charging station
+     * @returns {void}
+     */
+    removeChargingStation(){
+        this.chargingStationAttachedTo = null;
     }
 
 
@@ -154,7 +171,7 @@ module.exports = Scooter;
 <script src="scripts/linenumber.js"></script>
 <script src="scripts/fix-code-block.js"></script>
 <script>
-  var list = [{"title":"Battery","link":"<a href=\"Battery.html\">Battery</a>"},{"title":"Battery#charge","link":"<a href=\"Battery.html#charge\">Battery &rtrif; charge</a>"},{"title":"Battery#getCharge","link":"<a href=\"Battery.html#getCharge\">Battery &rtrif; getCharge</a>"},{"title":"Battery#isCharged","link":"<a href=\"Battery.html#isCharged\">Battery &rtrif; isCharged</a>"},{"title":"ChargingStation","link":"<a href=\"ChargingStation.html\">ChargingStation</a>"},{"title":"ChargingStation#dockScooter","link":"<a href=\"ChargingStation.html#dockScooter\">ChargingStation &rtrif; dockScooter</a>"},{"title":"ChargingStation#getNumberOfFreePlaces","link":"<a href=\"ChargingStation.html#getNumberOfFreePlaces\">ChargingStation &rtrif; getNumberOfFreePlaces</a>"},{"title":"ChargingStation#undockScooter","link":"<a href=\"ChargingStation.html#undockScooter\">ChargingStation &rtrif; undockScooter</a>"},{"title":"Scooter","link":"<a href=\"Scooter.html\">Scooter</a>"},{"title":"Scooter#useScooter","link":"<a href=\"Scooter.html#useScooter\">Scooter &rtrif; useScooter</a>"},{"title":"ScooterHire","link":"<a href=\"ScooterHire.html\">ScooterHire</a>"},{"title":"ScooterHire.addScooter","link":"<a href=\"ScooterHire.html#.addScooter\">ScooterHire.addScooter &rtrif; undefined</a>"},{"title":"ScooterHire.addUser","link":"<a href=\"ScooterHire.html#.addUser\">ScooterHire.addUser &rtrif; undefined</a>"},{"title":"ScooterHire.getUser","link":"<a href=\"ScooterHire.html#.getUser\">ScooterHire.getUser &rtrif; undefined</a>"},{"title":"User","link":"<a href=\"User.html\">User</a>"},{"title":"User#getScooterAtStation","link":"<a href=\"User.html#getScooterAtStation\">User &rtrif; getScooterAtStation</a>"},{"title":"User#returnScooter","link":"<a href=\"User.html#returnScooter\">User &rtrif; returnScooter</a>"},{"title":"User#setHiredScooter","link":"<a href=\"User.html#setHiredScooter\">User &rtrif; setHiredScooter</a>"}];
+  var list = [{"title":"Battery","link":"<a href=\"Battery.html\">Battery</a>"},{"title":"Battery#charge","link":"<a href=\"Battery.html#charge\">Battery &rtrif; charge</a>"},{"title":"Battery#getCharge","link":"<a href=\"Battery.html#getCharge\">Battery &rtrif; getCharge</a>"},{"title":"Battery#isCharged","link":"<a href=\"Battery.html#isCharged\">Battery &rtrif; isCharged</a>"},{"title":"Battery#use","link":"<a href=\"Battery.html#use\">Battery &rtrif; use</a>"},{"title":"ChargingStation","link":"<a href=\"ChargingStation.html\">ChargingStation</a>"},{"title":"ChargingStation#dockScooter","link":"<a href=\"ChargingStation.html#dockScooter\">ChargingStation &rtrif; dockScooter</a>"},{"title":"ChargingStation#getNumberOfFreePlaces","link":"<a href=\"ChargingStation.html#getNumberOfFreePlaces\">ChargingStation &rtrif; getNumberOfFreePlaces</a>"},{"title":"ChargingStation#undockScooter","link":"<a href=\"ChargingStation.html#undockScooter\">ChargingStation &rtrif; undockScooter</a>"},{"title":"Scooter","link":"<a href=\"Scooter.html\">Scooter</a>"},{"title":"Scooter#removeChargingStation","link":"<a href=\"Scooter.html#removeChargingStation\">Scooter &rtrif; removeChargingStation</a>"},{"title":"Scooter#setChargingStation","link":"<a href=\"Scooter.html#setChargingStation\">Scooter &rtrif; setChargingStation</a>"},{"title":"Scooter#useScooter","link":"<a href=\"Scooter.html#useScooter\">Scooter &rtrif; useScooter</a>"},{"title":"ScooterHire","link":"<a href=\"ScooterHire.html\">ScooterHire</a>"},{"title":"ScooterHire.addScooter","link":"<a href=\"ScooterHire.html#.addScooter\">ScooterHire.addScooter &rtrif; undefined</a>"},{"title":"ScooterHire.addUser","link":"<a href=\"ScooterHire.html#.addUser\">ScooterHire.addUser &rtrif; undefined</a>"},{"title":"ScooterHire.getScooter","link":"<a href=\"ScooterHire.html#.getScooter\">ScooterHire.getScooter &rtrif; undefined</a>"},{"title":"ScooterHire.getUser","link":"<a href=\"ScooterHire.html#.getUser\">ScooterHire.getUser &rtrif; undefined</a>"},{"title":"User","link":"<a href=\"User.html\">User</a>"},{"title":"User#getScooterAtStation","link":"<a href=\"User.html#getScooterAtStation\">User &rtrif; getScooterAtStation</a>"},{"title":"User#returnScooter","link":"<a href=\"User.html#returnScooter\">User &rtrif; returnScooter</a>"},{"title":"User#setHiredScooter","link":"<a href=\"User.html#setHiredScooter\">User &rtrif; setHiredScooter</a>"}];
   var options = 
   setupSearch(list, options)
 </script>
