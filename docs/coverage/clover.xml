@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1610979272018" clover="3.2.0">
+  <project timestamp="1610979272018" name="All files">
+    <metrics statements="65" coveredstatements="54" conditionals="14" coveredconditionals="9" methods="18" coveredmethods="13" elements="97" coveredelements="76" complexity="0" loc="65" ncloc="65" packages="1" files="4" classes="4"/>
+    <file name="h_Battery.js" path="D:\Users\dajka\Desktop\bootcamp\wk1\wk1_ScooterHireSystem\classes\h_Battery.js">
+      <metrics statements="16" coveredstatements="16" conditionals="6" coveredconditionals="6" methods="6" coveredmethods="6"/>
+      <line num="14" count="9" type="stmt"/>
+      <line num="15" count="9" type="stmt"/>
+      <line num="24" count="2" type="stmt"/>
+      <line num="25" count="2" type="stmt"/>
+      <line num="26" count="2" type="cond" truecount="4" falsecount="0"/>
+      <line num="27" count="1" type="stmt"/>
+      <line num="28" count="1" type="stmt"/>
+      <line num="29" count="1" type="stmt"/>
+      <line num="32" count="1" type="stmt"/>
+      <line num="33" count="1" type="stmt"/>
+      <line num="36" count="2" type="stmt"/>
+      <line num="44" count="2" type="stmt"/>
+      <line num="52" count="5" type="stmt"/>
+      <line num="61" count="2" type="stmt"/>
+      <line num="63" count="2" type="cond" truecount="2" falsecount="0"/>
+      <line num="67" count="2" type="stmt"/>
+    </file>
+    <file name="h_ChargingStation.js" path="D:\Users\dajka\Desktop\bootcamp\wk1\wk1_ScooterHireSystem\classes\h_ChargingStation.js">
+      <metrics statements="18" coveredstatements="18" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="4"/>
+      <line num="1" count="1" type="stmt"/>
+      <line num="2" count="1" type="stmt"/>
+      <line num="21" count="5" type="stmt"/>
+      <line num="22" count="5" type="stmt"/>
+      <line num="23" count="5" type="stmt"/>
+      <line num="32" count="5" type="stmt"/>
+      <line num="33" count="5" type="stmt"/>
+      <line num="34" count="5" type="stmt"/>
+      <line num="36" count="5" type="stmt"/>
+      <line num="45" count="3" type="stmt"/>
+      <line num="46" count="3" type="stmt"/>
+      <line num="47" count="3" type="stmt"/>
+      <line num="56" count="1" type="stmt"/>
+      <line num="57" count="1" type="stmt"/>
+      <line num="58" count="1" type="stmt"/>
+      <line num="59" count="1" type="stmt"/>
+      <line num="67" count="2" type="stmt"/>
+      <line num="71" count="1" type="stmt"/>
+    </file>
+    <file name="h_Scooter.js" path="D:\Users\dajka\Desktop\bootcamp\wk1\wk1_ScooterHireSystem\classes\h_Scooter.js">
+      <metrics statements="18" coveredstatements="15" conditionals="2" coveredconditionals="1" methods="4" coveredmethods="3"/>
+      <line num="1" count="1" type="stmt"/>
+      <line num="2" count="1" type="stmt"/>
+      <line num="3" count="1" type="stmt"/>
+      <line num="23" count="3" type="stmt"/>
+      <line num="25" count="3" type="stmt"/>
+      <line num="27" count="3" type="stmt"/>
+      <line num="30" count="3" type="stmt"/>
+      <line num="31" count="3" type="stmt"/>
+      <line num="32" count="3" type="cond" truecount="1" falsecount="1"/>
+      <line num="33" count="0" type="stmt"/>
+      <line num="36" count="3" type="stmt"/>
+      <line num="37" count="3" type="stmt"/>
+      <line num="41" count="3" type="stmt"/>
+      <line num="50" count="0" type="stmt"/>
+      <line num="51" count="0" type="stmt"/>
+      <line num="61" count="3" type="stmt"/>
+      <line num="69" count="1" type="stmt"/>
+      <line num="75" count="1" type="stmt"/>
+    </file>
+    <file name="h_ScooterHire.js" path="D:\Users\dajka\Desktop\bootcamp\wk1\wk1_ScooterHireSystem\classes\h_ScooterHire.js">
+      <metrics statements="13" coveredstatements="5" conditionals="4" coveredconditionals="0" methods="4" coveredmethods="0"/>
+      <line num="10" count="1" type="stmt"/>
+      <line num="12" count="1" type="stmt"/>
+      <line num="13" count="1" type="stmt"/>
+      <line num="15" count="1" type="stmt"/>
+      <line num="23" count="0" type="stmt"/>
+      <line num="32" count="0" type="stmt"/>
+      <line num="41" count="0" type="stmt"/>
+      <line num="42" count="0" type="cond" truecount="0" falsecount="2"/>
+      <line num="43" count="0" type="stmt"/>
+      <line num="54" count="0" type="stmt"/>
+      <line num="55" count="0" type="cond" truecount="0" falsecount="2"/>
+      <line num="56" count="0" type="stmt"/>
+      <line num="62" count="1" type="stmt"/>
+    </file>
+  </project>
+</coverage>
