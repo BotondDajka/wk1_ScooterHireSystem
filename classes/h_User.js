@@ -18,8 +18,18 @@ class User {
      * @param {string} userName 
      */
     constructor(userName){
-        this.userName = userName;
+        if (!userName) throw new Error("Username of User can not be empty");
+        userName = userName.replace(/ /g,"");
+        if (userName=="") throw new Error("Username of User can not be empty");
 
+        // Throws error if username is not unique
+        for(let i = 0; i < ScooterHire.userList.length; i++){
+            if (userName == ScooterHire.userList[i].userName){
+                throw new Error("Username of User must be unique");
+            }
+        }
+
+        this.userName = userName;
         ScooterHire.addUser(this); // Illigal OOP thing but OOP in JS is already illegal so ¯\_(ツ)_/¯
     }
     
@@ -28,7 +38,9 @@ class User {
      * @returns {void}
      */
     returnScooter(){
-
+        this.hiredScooter.hiredBy = null;
+        this.hiredScooter.isHired = false;
+        this.hiredScooter = null;
     }
 
     /**
@@ -37,6 +49,9 @@ class User {
      * @returns {void}
      */
     setHiredScooter(Scooter){
+        Scooter.isHired = true;
+        Scooter.hiredBy = this;
+
         this.hiredScooter = Scooter
     }
 
@@ -47,10 +62,10 @@ class User {
      */
     getScooterAtStation(stationName){
         for (let i = 0; i < ScooterHire.chargingStations.length; i++){
-            if (stationName == ScooterHire.chargingStations[i]){
-                for (let i2 = 0; i2 < ScooterHire.chargingStations[i].chargedScooters.length; i2++){
-                    if (ScooterHire.chargingStations[i].chargedScooters[i2].isHired == false){
-                        return ScooterHire.chargingStations[i].chargedScooters[i2];
+            if (stationName == ScooterHire.chargingStations[i].name){
+                for (let i2 = 0; i2 < ScooterHire.chargingStations[i].dockedScooters.length; i2++){
+                    if (ScooterHire.chargingStations[i].dockedScooters[i2].isHired == false){
+                        return ScooterHire.chargingStations[i].dockedScooters[i2];
                     }
                 }
                 return null;

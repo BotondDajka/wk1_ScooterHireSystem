@@ -13,10 +13,14 @@
     "clean-jsdoc-theme": "^3.0.6",
     "fs": "0.0.1-security",
     "jest": "^26.6.3",
-    "jsdoc": "^3.6.6"
+    "jsdoc": "^3.6.6",
+    "prompt": "^1.1.0"
   },
   "moduleDirectories": [
     "node_modules",
     "src"
-  ]
+  ],
+  "jest":{
+    "coverageDirectory":"./docs/coverage"
+  }
 }

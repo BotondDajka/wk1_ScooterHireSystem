@@ -15,12 +15,12 @@ describe("ScooterHire Test", ()=>{
         const myScooter = new Scooter();
         expect(ScooterHire.allScooters).toEqual([myScooter]);
 
-        const myUser = new User();
+        const myUser = new User("bob");
         expect(ScooterHire.userList).toEqual([myUser]);
     });
 
     test("static addUser Test", () => {
-        const myUser = new User();
+        const myUser = new User("bob55");
         ScooterHire.addUser(myUser);
     });
 
@@ -42,6 +42,5 @@ describe("ScooterHire Test", ()=>{
         const otherScooter5 = new Scooter();
 
         expect(ScooterHire.getScooter(myScooter.serialNum)).toEqual(myScooter);
-        
     });
 });

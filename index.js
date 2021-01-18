@@ -45,3 +45,5 @@ console.log("Scooter4 " + myScooter4.serialNum + "<-- This should be unique too"
 
 
 
+
+
