@@ -1,5 +1,6 @@
 
 ## [**JSDoc Documentation**](https://botonddajka.github.io/wk1_ScooterHireSystem)
+## [**Jest Report**](https://botonddajka.github.io/wk1_ScooterHireSystem/coverage/lcov-report/index.html)
 
 
 
